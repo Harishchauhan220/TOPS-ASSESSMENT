@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Booking Form</title>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #555;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('down-arrow.png') no-repeat right center;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#slotDiv, #timeDiv {
+    display: none;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Restaurant Booking Form</h1>
+
+<form id="bookingForm">
+    <label for="bookingType">Choice of booking:</label>
+    <select id="bookingType" name="bookingType" onchange="updateForm()">
+        <option value="fullDay">Full day booking</option>
+        <option value="halfDay">Half day booking</option>
+        <option value="hourly">Hourly booking</option>
+    </select>
+    <br>
+
+    <label for="userName">User name:</label>
+    <input type="text" id="userName" name="userName" required>
+    <br>
+
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="tel" id="mobileNumber" name="mobileNumber" required>
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+
+    <label for="noOfPersons">No of persons:</label>
+    <input type="number" id="noOfPersons" name="noOfPersons" required>
+    <br>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+    <br>
+
+    <div id="slotDiv">
+        <label for="slot">Slot:</label>
+        <select id="slot" name="slot">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+        </select>
+        <br>
+    </div>
+
+    <div id="timeDiv">
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" required>
+        <br>
+    </div>
+
+    <input type="submit" value="Book Now">
+</form>
+
+<script>
+    function updateForm() {
+        var bookingType = document.getElementById("bookingType").value;
+        var slotDiv = document.getElementById("slotDiv");
+        var timeDiv = document.getElementById("timeDiv");
+
+        slotDiv.style.display = "none";
+        timeDiv.style.display = "none";
+
+        if (bookingType === "halfDay") {
+            slotDiv.style.display = "block";
+            timeDiv.style.display = "none";
+        } else if (bookingType === "hourly") {
+            slotDiv.style.display = "none";
+            timeDiv.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
